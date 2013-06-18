@@ -1,3 +1,14 @@
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">google.load("swfobject", "2.2");</script>
+
+<div id="ytapiplayer">
+  You need Flash player 8+ and JavaScript enabled to view this video.
+</div>
+
+<table>
+  <%= render @comments %>
+</table>
+
 <% @comment = Comment.new %>
 <%= form_for(@comment) do |f| %>
   <% if @comment.errors.any? %>
@@ -13,7 +24,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :message %><br />
+    <%= f.label 'comment：' %>
     <%= f.text_field :message %>
   </div>
   <div class="actions">

@@ -1,4 +1,7 @@
 NikoNiko::Application.routes.draw do
+  resources :movies
+
+
   resources :comments
 
 
