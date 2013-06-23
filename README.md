@@ -1,1 +1,3 @@
 ニコニコ風 Ustream & Youtube
+になる予定ですが、今のところYouTubeを埋め込んでCommentoがくっついてるだけです。。。
+今後、jQueryでCommentを特定の時間で生成&移動させて、さらに動画ごとにmodelつくってそれっぽい感じにする予定です。
