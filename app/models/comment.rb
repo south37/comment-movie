@@ -1,3 +1,3 @@
 class Comment < ActiveRecord::Base
-  attr_accessible :message
+  attr_accessible :message, :id
 end
