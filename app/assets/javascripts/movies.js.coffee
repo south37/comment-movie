@@ -9,12 +9,19 @@ window.onYouTubePlayerReady = (playerId) ->
 
 window.onytplayerStateChange = (newState) ->
   if newState is 1
-    setTimeout textInAndOut, 1000
+    $('#comments p').map ->
+      comment = $(this)
+      commentedTime = comment.attr('commented-time')
+      setTimeout ->
+        commentMove comment
+      , commentedTime
 
-window.textInAndOut = ->
-  $('#id5').css({'display':'block'}).textillate({
+window.commentMove = (comment) ->
+  comment.css({'display':'block'}).textillate({
     loop: true
     minDisplayTime: 500
     autoStart: true
   })
-  setTimeout (-> $('#id5').css({'display':'none'})), 5500
+  setTimeout ->
+    comment.css({'display':'none'})
+  , 5500
