@@ -1,7 +1,11 @@
-.comment {
+#comments p{
   display: none;
-  font-size: 30px;
-  color: #ffffff;
+  visibility: hidden;
+  
+  font-size: 34px;
+  font-weight: bold;
+  color: #FFF;
+  -webkit-text-stroke: 2px black;
 
   width: 425px;
   text-align: center;
