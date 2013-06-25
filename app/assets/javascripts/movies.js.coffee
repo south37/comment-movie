@@ -17,7 +17,9 @@ window.onytplayerStateChange = (newState) ->
       , commentedTime
 
 window.commentMove = (comment) ->
-  comment.css({'display':'block'}).textillate({
+  randnum = Math.floor( Math.random() * 300 )
+  topPos = randnum + 'px'
+  comment.css({'display':'block', 'top':topPos}).textillate({
     loop: true
     minDisplayTime: 500
     autoStart: true
