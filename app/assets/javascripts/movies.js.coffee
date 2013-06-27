@@ -28,12 +28,8 @@ window.commentMove = (comment) ->
   comment.css(
     'display': 'block'
     'top': topPos
-  ).textillate(
-    loop: true
-    minDisplayTime: 500
-    initialDelay: 0
-    autoStart: true
-  )
+    'visibility': 'visible'
+  ).addClass('animated bounceInRight')
   setTimeout ->
-    comment.css({'display':'none'})
-  , 5500
+    comment.removeClass('bounceInRight').addClass('bounceOutLeft')
+  , 2000
