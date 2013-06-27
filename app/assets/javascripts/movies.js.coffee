@@ -31,6 +31,7 @@ window.commentMove = (comment) ->
   ).textillate(
     loop: true
     minDisplayTime: 500
+    initialDelay: 0
     autoStart: true
   )
   setTimeout ->
