@@ -10,7 +10,7 @@ window.onYouTubePlayerReady = (playerId) ->
   
 window.makeSubmitButtonHandler = (ytplayer) ->
   $('input', $('.submit')).click ->
-    commented_time = Math.floor ytplayer.getCurrentTime() * 1000
+    commented_time = Math.floor( ytplayer.getCurrentTime() * 1000 )
     $('#comment_commented_time').val commented_time
 
 window.onytplayerStateChange = (newState) ->
