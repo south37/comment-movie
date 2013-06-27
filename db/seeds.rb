@@ -6,8 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Comment.delete_all
-Comment.create([
-                {message: 'Great movie!', commented_time: 1000},
+Comment.create([{message: 'Great movie!', commented_time: 1000},
                 {message: 'Wonderful music!', commented_time: 3000},
-                {message: 'I like this song very much!', commented_time: 5000}
-               ])
+                {message: 'I like this song very much!', commented_time: 5000}])
+
+Movie.delete_all
