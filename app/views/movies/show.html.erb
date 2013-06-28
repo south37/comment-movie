@@ -1,5 +1,12 @@
-<p id="notice"><%= notice %></p>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">google.load("swfobject", "2.2");</script>
 
+<div id="ytapiplayer">
+  You need Flash player 8+ and JavaScript enabled to view this video.
+</div>
 
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Back', movies_path %>
+<div id="comments">
+<%= render @comments %>
+</div>
+
+<%= render 'comments/form' %>
