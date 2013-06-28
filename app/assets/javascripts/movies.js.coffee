@@ -1,7 +1,7 @@
 $ ->
   params = { allowScriptAccess: "always" }
   atts = { id: "myytplayer" }
-  swfobject.embedSWF("http://www.youtube.com/v/pNlLv8rgRSo?enablejsapi=1&playerapiid=ytplayer", "ytapiplayer", "425", "356", "8", null, null, params, atts)
+  swfobject.embedSWF("http://www.youtube.com/v/pNlLv8rgRSo?enablejsapi=1&playerapiid=ytplayer", "ytapiplayer", "480", "360", "8", null, null, params, atts)
 
 window.onYouTubePlayerReady = (playerId) ->
   ytplayer = document.getElementById("myytplayer")
