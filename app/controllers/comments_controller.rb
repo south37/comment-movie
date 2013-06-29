@@ -41,7 +41,9 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = Comment.new(params[:comment])
-
+    movie = Movie.find_by_url(session[:movie_url])
+    movie.comments << @comment
+    
     respond_to do |format|
       if @comment.save
         format.html { redirect_to controller: 'movies',
