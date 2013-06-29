@@ -16,6 +16,8 @@ window.makeSubmitButtonHandler = (ytplayer) ->
 
 window.onytplayerStateChange = (newState) ->
   if newState is 1
+    if gon.comment_exists != true
+      return
     $('#comments p').map ->
       comment = $(this)
       commentedTime = comment.attr('commented-time')

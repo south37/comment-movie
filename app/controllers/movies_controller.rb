@@ -5,6 +5,8 @@ class MoviesController < ApplicationController
     gon.movie_url = params[:url]
     @comments = Comment.all
 
+    gon.comment_exists = true if @comments != []
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @movie }
