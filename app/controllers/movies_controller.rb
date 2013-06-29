@@ -2,6 +2,7 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
   def index
+    @movie = new_movie
     gon.movie_url = params[:url]
     @comments = Comment.all
 
