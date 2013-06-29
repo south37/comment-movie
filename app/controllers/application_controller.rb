@@ -4,8 +4,7 @@ class ApplicationController < ActionController::Base
 
   private
   def new_movie
-    session[:movie_url] = params[:url] if params[:url]
-    raise '例外発生' unless session[:movie_url]
+    session[:movie_url] = params[:url]
     movie = Movie.find_by_url(session[:movie_url])
     return movie if movie
 

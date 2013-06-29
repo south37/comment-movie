@@ -4,7 +4,7 @@ class MoviesController < ApplicationController
   def index
     @movie = new_movie
     gon.movie_url = params[:url]
-    @comments = Comment.all
+    @comments = @movie.comments
 
     gon.comment_exists = true if @comments != []
 
