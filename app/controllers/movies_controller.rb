@@ -84,4 +84,14 @@ class MoviesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # used in index
+  private
+  def new_movie
+    session[:movie_url] = params[:url]
+    movie = Movie.find_by_url(session[:movie_url])
+    return movie if movie
+
+    movie = Movie.create(url: session[:movie_url])
+  end
 end
