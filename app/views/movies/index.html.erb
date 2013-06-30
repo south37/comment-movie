@@ -1,6 +1,10 @@
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">google.load("swfobject", "2.2");</script>
 
+<p id="movielink">
+  このページは<%= link_to 'このYouTube動画', 'http://www.youtube.com/watch?v=' + params[:url], target: '_brank' %>にコメントアニメーションをのせたものになっています。
+</p>
+
 <div id="ytapiplayer">
   You need Flash player 8+ and JavaScript enabled to view this video.
 </div>
