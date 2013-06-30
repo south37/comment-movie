@@ -49,7 +49,8 @@ class CommentsController < ApplicationController
       if @comment.save
         format.html { redirect_to controller: 'movies',
           action: 'index',
-          params: {url: session[:movie_url]} }
+          params: {url: movie.url}
+        }
         format.json { render json: @comment, status: :created, location: @comment }
       else
         format.html { render action: "new" }

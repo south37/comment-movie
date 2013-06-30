@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
   def index
-    @movie = new_movie
+    @movie = new_movie(params[:url])
     gon.movie_url = params[:url]
     @comments = @movie.comments
 
@@ -44,11 +44,15 @@ class MoviesController < ApplicationController
   # POST /movies
   # POST /movies.json
   def create
+    params[:movie][:url] = params[:movie][:url].split('=').last
     @movie = Movie.new(params[:movie])
 
     respond_to do |format|
       if @movie.save
-        format.html { redirect_to @movie, notice: 'Movie was successfully created.' }
+        format.html { redirect_to controller: 'movies',
+          action: 'index',
+          params: {url: @movie.url}
+        }
         format.json { render json: @movie, status: :created, location: @movie }
       else
         format.html { render action: "new" }
@@ -87,8 +91,8 @@ class MoviesController < ApplicationController
 
   # used in index
   private
-  def new_movie
-    session[:movie_url] = params[:url]
+  def new_movie(url)
+    session[:movie_url] = url
     movie = Movie.find_by_url(session[:movie_url])
     return movie if movie
 
