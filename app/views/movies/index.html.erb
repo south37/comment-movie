@@ -1,15 +1,6 @@
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">google.load("swfobject", "2.2");</script>
 
-<p id="ytmovie-link">
-  このページは<%= link_to 'このYouTube動画', 'http://www.youtube.com/watch?v=' + params[:url], target: '_brank' %>にコメントアニメーションをのせたものになっています
-</p>
-<p id="movie-link">
-  別のYouTubeの動画にコメントアニメーションをつける場合は、空欄に動画のURLを入力して下さい
-<%= render 'form' %>
-</p>
-<br>
-
 <div id="ytapiplayer">
   You need Flash player 8+ and JavaScript enabled to view this video.
 </div>
@@ -17,5 +8,14 @@
 <div id="comments">
 <%= render @comments %>
 </div>
-
 <%= render 'comments/form' %>
+
+<br>
+
+<p id="ytmovie-link">
+  このページは<%= link_to 'このYouTube動画', 'http://www.youtube.com/watch?v=' + params[:url], target: '_brank' %>にコメントアニメーションをのせたものになっています
+</p>
+<p id="movie-link">
+  別のYouTubeの動画にコメントアニメーションをつける場合は、空欄に動画のURLを入力して下さい
+<%= render 'form' %>
+</p>
