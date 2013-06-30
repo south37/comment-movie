@@ -1,11 +1,11 @@
 <% @comment = Comment.new %>
-<%= form_for @comment do |f| %>
+<%= form_for @comment, remote: true do |f| %>
   <div class="field">
     <%= f.label 'comment：' %>
     <%= f.text_field :message %>
     <%= f.hidden_field :commented_time %>
   </div>
   <div class="submit">
-    <%= f.submit 'コメントを書き込み'%>
+    <%= f.submit 'コメントを書き込み' %>
   </div>
 <% end %>

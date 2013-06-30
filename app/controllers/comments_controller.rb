@@ -43,6 +43,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
     movie = Movie.find_by_url(session[:movie_url])
     movie.comments << @comment
+    @new_message = @Comment.message
     
     respond_to do |format|
       if @comment.save

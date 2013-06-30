@@ -1,0 +1,1 @@
+<p commented-time="<%= comment.commented_time %>"><%= comment.message %></p>
