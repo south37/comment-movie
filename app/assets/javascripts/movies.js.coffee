@@ -50,4 +50,6 @@ window.randPos = ->
   randnum + 'px'
 
 window.commentMoveOut = (comment) ->
+  if stopMovie is true
+    return
   comment.removeClass('bounceInRight').addClass('bounceOutLeft')
