@@ -7,17 +7,17 @@ $ ->
 window.onYouTubePlayerReady = (playerId) ->
   window.ytplayer = document.getElementById("myytplayer")
   ytplayer.addEventListener("onStateChange", "onytplayerStateChange")
-  makeSubmitButtonHandler ytplayer
+  makeSubmitButtonHandler()
   
-window.makeSubmitButtonHandler = (ytplayer) ->
+window.makeSubmitButtonHandler = ->
   $('input[name="commit"]').click ->
     commentedTime = Math.floor( ytplayer.getCurrentTime() * 1000 )
     $('#comment_commented_time').val commentedTime
-    newCommentMove()
+    moveNewComment()
 
-window.newCommentMove = ->
+window.moveNewComment = ->
   newMessage = $('#comment_message').val()
-  commentMove $('<p>'+newMessage+'</p>').appendTo( $('#comments') )
+  moveComment $('<p>'+newMessage+'</p>').appendTo( $('#comments') )
 
 window.onytplayerStateChange = (newState) ->
   if (newState is 1 && gon.comment_exists = true)
@@ -29,17 +29,17 @@ window.onytplayerStateChange = (newState) ->
 window.makeComments = ->
   $('#comments p').map ->
     comment = $(this)
-    waitTime = comment.attr('commented-time') - (ytplayer.getCurrentTime() * 1000)
+    waitTime = comment.attr('commented-time') - (ytplayer.getCurrentTime() * 1000) - 1500
     if waitTime > 0
-      setTimeout (-> commentMove comment), waitTime
+      setTimeout (-> moveComment comment), waitTime
 
-window.commentMove = (comment) ->
+window.moveComment = (comment) ->
   if stopMovie is true
     return
-  commentMoveIn comment
-  setTimeout (-> commentMoveOut comment), 1500
+  moveCommentIn comment
+  setTimeout (-> moveCommentOut comment), 1500
 
-commentMoveIn = (comment) ->
+moveCommentIn = (comment) ->
   comment.css(
     'display': 'block'
     'top': randPos()
@@ -49,7 +49,7 @@ window.randPos = ->
   randnum = Math.floor( Math.random() * 300 )
   randnum + 'px'
 
-window.commentMoveOut = (comment) ->
+window.moveCommentOut = (comment) ->
   if stopMovie is true
     return
   comment.removeClass('bounceInRight').addClass('bounceOutLeft')
