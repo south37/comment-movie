@@ -22,6 +22,7 @@ window.moveNewComment = ->
 window.onytplayerStateChange = (newState) ->
   if (newState is 1 && gon.comment_exists = true)
     window.stopMovie = false
+    moveCommentOut $('.onDisplay')
     makeComments()
   else
     window.stopMovie = true
@@ -29,7 +30,7 @@ window.onytplayerStateChange = (newState) ->
 window.makeComments = ->
   $('#comments p').map ->
     comment = $(this)
-    waitTime = comment.attr('commented-time') - (ytplayer.getCurrentTime() * 1000) - 1500
+    waitTime = comment.attr('commented-time') - (ytplayer.getCurrentTime() * 1000)
     if waitTime > 0
       setTimeout (-> moveComment comment), waitTime
 
@@ -43,7 +44,7 @@ moveCommentIn = (comment) ->
   comment.css(
     'display': 'block'
     'top': randPos()
-  ).addClass('animated bounceInRight')
+  ).addClass('animated bounceInRight').addClass('onDisplay')
 
 window.randPos = ->
   randnum = Math.floor( Math.random() * 300 )
@@ -52,4 +53,4 @@ window.randPos = ->
 window.moveCommentOut = (comment) ->
   if stopMovie is true
     return
-  comment.removeClass('bounceInRight').addClass('bounceOutLeft')
+  comment.removeClass('bounceInRight onDisplay').addClass('bounceOutLeft')
