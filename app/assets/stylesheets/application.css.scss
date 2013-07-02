@@ -15,13 +15,18 @@
 body {
   background-image: image-url("body-bg.jpg");
   margin: 10px;
-}
 
-#main {
-  width: 600px;
-  margin: 0 auto;
-}
+  #contents {
+    width: 600px;
+    margin: 0 auto;
+    
+    #logo {
+      width: 600px;
+    }
 
-#logo {
-  width: 600px;
+    #main {
+      position: relative;
+      top: 0px;
+    }
+  }
 }
