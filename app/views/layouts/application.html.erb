@@ -9,6 +9,13 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div id="main">
+      <div id="logo">
+	<%= image_tag 'logo.gif', size: '100x85' %>
+      </div>
+
+      <%= yield %>
+      
+    </div>
   </body>
 </html>
