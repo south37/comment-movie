@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>CommentMovie</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= include_gon %>
-  <%= javascript_include_tag "application", url_for({controller: :comments, action: :create}) %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>CommentMovie</title>
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= include_gon %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
 
-<%= yield %>
-
-</body>
+  <body>
+    <%= yield %>
+  </body>
 </html>
