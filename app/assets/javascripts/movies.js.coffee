@@ -10,7 +10,7 @@ window.onYouTubePlayerReady = (playerId) ->
   makeSubmitButtonHandler()
   
 window.makeSubmitButtonHandler = ->
-  $('input[name="commit"]').click ->
+  $('#comments-form div.submit input').click ->
     commentedTime = Math.floor( ytplayer.getCurrentTime() * 1000 )
     $('#comment_commented_time').val commentedTime
     moveNewComment()
@@ -21,14 +21,15 @@ window.moveNewComment = ->
 
 window.onytplayerStateChange = (newState) ->
   if (newState is 1 && gon.comment_exists = true)
-    window.stopMovie = false
-    moveCommentOut $('.onDisplay')
+    if stopMovie is true
+      window.stopMovie = false
+      moveCommentOut $('.onDisplay')
     makeComments()
   else
     window.stopMovie = true
 
 window.makeComments = ->
-  $('#comments p').map ->
+  $('#comments').children().map ->
     comment = $(this)
     waitTime = comment.attr('commented-time') - (ytplayer.getCurrentTime() * 1000)
     if waitTime > 0
