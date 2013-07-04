@@ -3,6 +3,11 @@ $ ->
   atts = { id: "myytplayer" }
   movieURL = "http://www.youtube.com/v/" + gon.movie_url + "?enablejsapi=1&playerapiid=ytplayer"
   swfobject.embedSWF(movieURL, "ytapiplayer", "480", "360", "8", null, null, params, atts)
+  
+window.timeout = (time) ->
+  $.Deferred( (dfd) ->
+    setTimeout dfd.resolve, time
+  ).promise()
 
 window.onYouTubePlayerReady = (playerId) ->
   window.ytplayer = document.getElementById("myytplayer")
@@ -23,23 +28,26 @@ window.onytplayerStateChange = (newState) ->
   if (newState is 1 && gon.comment_exists = true)
     if stopMovie is true
       window.stopMovie = false
-      moveCommentOut $('.onDisplay')
+      moveCommentOut $('#comments').children('p.onDisplay')
     makeComments()
   else
     window.stopMovie = true
 
 window.makeComments = ->
-  $('#comments').children().map ->
+  $('#comments').children('p').map ->
     comment = $(this)
     waitTime = comment.attr('commented-time') - (ytplayer.getCurrentTime() * 1000)
     if waitTime > 0
-      setTimeout (-> moveComment comment), waitTime
+      timeout(waitTime).then(-> moveComment comment)
 
 window.moveComment = (comment) ->
   if stopMovie is true
     return
   moveCommentIn comment
-  setTimeout (-> moveCommentOut comment), 1500
+  timeout(1500).then ->
+    if stopMovie is true
+      return
+    moveCommentOut comment
 
 moveCommentIn = (comment) ->
   comment.css(
@@ -52,6 +60,4 @@ window.randPos = ->
   randnum + 'px'
 
 window.moveCommentOut = (comment) ->
-  if stopMovie is true
-    return
   comment.removeClass('bounceInRight onDisplay').addClass('bounceOutLeft')
