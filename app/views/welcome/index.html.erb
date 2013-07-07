@@ -1,9 +1,11 @@
 <p id="movie-link">
   コメントアニメーションをつけたいYouTube動画のURLを入力して下さい
-<%= render 'movies/form' %>
+  <%= render 'movies/form' %>
 </p>
 <p id="attention">
   ※現在は、Google Chromeでのみ視聴が可能となっています。
 </p>
-
+<p id="demo">
+  <%= link_to 'デモページ', controller: 'movies', action: 'index', params: {url: 'mMfbvfgiTmo'} %>
+</p>
 
