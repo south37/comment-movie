@@ -4,7 +4,7 @@ jQuery ->
   movieURL = "http://www.youtube.com/v/" + gon.movie_url + "?enablejsapi=1&playerapiid=ytplayer"
   swfobject.embedSWF(movieURL, "ytapiplayer", "480", "360", "8", null, null, params, atts)
   
-window.timeout = (time) ->
+timeout = (time) ->
   jQuery.Deferred( (dfd) ->
     setTimeout dfd.resolve, time
   ).promise()
@@ -14,13 +14,13 @@ window.onYouTubePlayerReady = (playerId) ->
   ytplayer.addEventListener("onStateChange", "onytplayerStateChange")
   makeSubmitButtonHandler()
   
-window.makeSubmitButtonHandler = ->
+makeSubmitButtonHandler = ->
   jQuery('#comments-form div.submit input').click ->
     commentedTime = Math.floor( ytplayer.getCurrentTime() * 1000 )
     jQuery('#comment_commented_time').val commentedTime
     moveNewComment()
 
-window.moveNewComment = ->
+moveNewComment = ->
   newMessage = jQuery('#comment_message').val()
   moveComment jQuery('<p>'+newMessage+'</p>').appendTo( jQuery('#comments') )
 
@@ -33,7 +33,7 @@ window.onytplayerStateChange = (newState) ->
   else
     window.stopMovie = true
 
-window.makeComments = ->
+makeComments = ->
   jQuery('#comments').children('p').map ->
     comment = jQuery(this)
     waitTime = comment.attr('commented-time') - (ytplayer.getCurrentTime() * 1000)
@@ -43,7 +43,7 @@ window.makeComments = ->
           return
         moveComment comment
 
-window.moveComment = (comment) ->
+moveComment = (comment) ->
   moveCommentIn comment
   timeout(1500).then ->
     if stopMovie is true
@@ -54,11 +54,11 @@ moveCommentIn = (comment) ->
   comment.css(
     'display': 'block'
     'top': randPos()
-  ).addClass('animated bounceInRight').addClass('onDisplay')
+  ).addClass('animated bounceInRight onDisplay')
 
-window.randPos = ->
+randPos = ->
   randnum = Math.floor( Math.random() * 300 )
   randnum + 'px'
 
-window.moveCommentOut = (comment) ->
+moveCommentOut = (comment) ->
   comment.removeClass('bounceInRight onDisplay').addClass('bounceOutLeft')
