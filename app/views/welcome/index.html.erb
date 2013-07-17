@@ -1,7 +1,9 @@
 <p id="movie-link">
-  コメントアニメーションをつけたいYouTube動画のURLを入力して下さい
-  <%= render 'movies/form' %>
+  コメントアニメーションをつけたい
+  <%= link_to 'YouTube', 'http://www.youtube.com/', target: '_brank' %>
+  動画のURLを入力して下さい
 </p>
+<%= render 'movies/form' %>
 <p id="attention">
   ※現在は、Google Chromeでのみ視聴が可能となっています。
 </p>
