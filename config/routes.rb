@@ -1,9 +1,10 @@
 NikoNiko::Application.routes.draw do
-  get 'movies' => 'movies#index'
+  get  'movies' => 'movies#index'
+  post 'movies' => 'movies#create'
 
   post 'comments' => 'comments#create'
   
-  get "welcome/index"
+  get  "welcome/index"
   
   root :to => 'welcome#index', as: 'root'
 
