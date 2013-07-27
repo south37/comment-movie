@@ -1,18 +1,32 @@
 jQuery ->
-  params = { allowScriptAccess: "always" }
-  atts = { id: "myytplayer" }
-  movieURL = "http://www.youtube.com/v/" + gon.movie_url + "?enablejsapi=1&playerapiid=ytplayer"
-  swfobject.embedSWF(movieURL, "ytapiplayer", "480", "360", "8", null, null, params, atts)
+  tag = jQuery('<script/>').attr('src', 'http://www.youtube.com/iframe_api')
+  jQuery('#myytplayer').before(tag)
   
+  window.onYouTubeIframeAPIReady = ->
+    window.ytplayer = new YT.Player('myytplayer',
+      height: '360'
+      width: '480'
+      videoId: gon.movie_url
+      events:
+        'onReady': onYouTubePlayerReady
+        'onStateChange': onytplayerStateChange
+      )
+
+  window.onYouTubePlayerReady = (event) ->
+    makeSubmitButtonHandler()
+
+  window.onytplayerStateChange = (event) ->
+    if (ytplayer.getPlayerState() is 1 && gon.comment_exists = true)
+      window.stopMovie = false
+      moveCommentOut jQuery('#comments').children('p.onDisplay')
+      makeComments()
+    else
+      window.stopMovie = true
+
 timeout = (time) ->
   jQuery.Deferred( (dfd) ->
     setTimeout dfd.resolve, time
   ).promise()
-
-window.onYouTubePlayerReady = (playerId) ->
-  window.ytplayer = document.getElementById("myytplayer")
-  ytplayer.addEventListener("onStateChange", "onytplayerStateChange")
-  makeSubmitButtonHandler()
   
 makeSubmitButtonHandler = ->
   jQuery('#comments-form div.submit input').click ->
@@ -23,15 +37,6 @@ makeSubmitButtonHandler = ->
 moveNewComment = ->
   newMessage = jQuery('#comment_message').val()
   moveComment jQuery('<p>'+newMessage+'</p>').appendTo( jQuery('#comments') )
-
-window.onytplayerStateChange = (newState) ->
-  if (newState is 1 && gon.comment_exists = true)
-    if window.stopMovie is true
-      window.stopMovie = false
-      moveCommentOut jQuery('#comments').children('p.onDisplay')
-    makeComments()
-  else
-    window.stopMovie = true
 
 makeComments = ->
   jQuery('#comments').children('p').map ->
