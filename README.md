@@ -1,2 +1,2 @@
 YouTubeの動画を埋め込んで動きのあるコメントをつける事が出来るWebページです。
-後々、Ustreamにも対応予定です。
+http://comment-movie.herokuapp.com
