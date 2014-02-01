@@ -1,27 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <% set_meta_tags :title => 'Com.Movie' %>
-    <% set_meta_tags :description => 'コメント付きでYoutube動画を視聴出来ます' %>
-    <% set_meta_tags :keywords => 'コメント,動画,Youtube,youtube' %>
-    <%= display_meta_tags %>
+<head>
+  <% set_meta_tags :title => 'Com.Movie' %>
+  <% set_meta_tags :description => 'コメント付きでYoutube動画を視聴出来ます' %>
+  <% set_meta_tags :keywords => 'コメント,動画,Youtube,youtube' %>
+  <%= display_meta_tags %>
 
-    <%= stylesheet_link_tag    "application", :media => "all" %>
-    <%= include_gon %>
-    <%= csrf_meta_tags %>
-  </head>
-  <body>
-    <div id="contents">
-      <div id="logo">
-      	<%= link_to root_path do %>
-      	  <%= image_tag 'logo.gif', size: '100x85' %>
-      	<% end %>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= include_gon %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="navbar navbar-inverse" role="navigation">
+    <div class="navbar-inner">
+      <div class="container">
+        <ul class="nav navbar-nav">
+          <li>
+          <%= link_to root_path, class: 'brand' do %>
+            <%= image_tag 'logo.gif', size: '120x40' %>
+          <% end %>
+          </li>
+        </ul>
+        <form class="navbar-search" role="search">
+          <input type="text" class="search-query" placeholder="動画を検索">
+        </form>
       </div>
-      <div id="main">
-       	<%= yield %>
-      </div>     
     </div>
-  </body>
+  </div>
 
-  <%= javascript_include_tag "application" %>
+  <div id="main" class="container">
+    <div class="row">
+     	<%= yield %>
+    </div>
+  </div>
+
+  <footer style="text-align: center">
+    <p>© 2013 south37 All Rights Reserved.</p>
+  </footer>
+</body>
+
+<%= javascript_include_tag "application" %>
 </html>

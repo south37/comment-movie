@@ -39,7 +39,7 @@ moveNewComment = ->
   moveComment jQuery('<p>'+newMessage+'</p>').appendTo( jQuery('#comments') )
 
 makeComments = ->
-  jQuery('#comments').children('p').map ->
+  jQuery('.comments').map ->
     comment = jQuery(this)
     waitTime = comment.attr('commented-time') - (ytplayer.getCurrentTime() * 1000)
     if waitTime > 0
@@ -62,7 +62,7 @@ moveCommentIn = (comment) ->
   ).addClass('animated bounceInRight onDisplay')
 
 randPos = ->
-  randnum = Math.floor( Math.random() * 300 )
+  randnum = Math.floor( Math.random() * 290 ) + 80
   randnum + 'px'
 
 moveCommentOut = (comment) ->

@@ -14,19 +14,8 @@
 
 body {
   background-image: image-url("body-bg.jpg");
-  margin: 10px;
 
-  #contents {
-    width: 500px;
-    margin: 0 auto;
-    
-    #logo {
-      width: 500px;
-    }
-
-    #main {
-      position: relative;
-      top: 0px;
-    }
+  #main {
+    width: 470px;
   }
 }

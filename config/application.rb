@@ -58,5 +58,8 @@ module NikoNiko
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # AssetsPipelineによるコンパイル対象を増やす(for SASS)
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
   end
 end

@@ -1,11 +1,10 @@
-<% @comment = Comment.new %>
+<br>
 <%= form_for @comment, remote: true do |f| %>
-  <div class="field">
-    <%= f.label 'comment：' %>
-    <%= f.text_field :message %>
-    <%= f.hidden_field :commented_time %>
-  </div>
-  <div class="submit">
-    <%= f.submit 'コメントを書き込み' %>
+  <div class="input-group input-group-lg">
+    <%= f.text_field :message, class: 'form-control', placeholder: 'コメント' %>
+    <%= f.hidden_field :commented_time, class: 'form-control' %>
+    <div class="input-group-btn">
+      <%= f.submit 'Enter', class: 'btn btn-primary' %>
+    </div>
   </div>
 <% end %>
