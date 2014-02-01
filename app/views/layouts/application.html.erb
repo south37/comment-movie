@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CommentMovie</title>
+    <% set_meta_tags :title => 'Com.Movie' %>
+    <% set_meta_tags :description => 'コメント付きでYoutube動画を視聴出来ます' %>
+    <% set_meta_tags :keywords => 'コメント,動画,Youtube,youtube' %>
+    <%= display_meta_tags %>
+
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= include_gon %>
     <%= csrf_meta_tags %>
@@ -9,12 +13,12 @@
   <body>
     <div id="contents">
       <div id="logo">
-	<%= link_to root_path do %>
-	  <%= image_tag 'logo.gif', size: '100x85' %>
-	<% end %>
+      	<%= link_to root_path do %>
+      	  <%= image_tag 'logo.gif', size: '100x85' %>
+      	<% end %>
       </div>
       <div id="main">
-	<%= yield %>
+       	<%= yield %>
       </div>     
     </div>
   </body>
