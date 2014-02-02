@@ -16,3 +16,6 @@
 
 # Ignore public/assets/
 /public/assets/*
+
+# Ignore *.swp
+*.swp
