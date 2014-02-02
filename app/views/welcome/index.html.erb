@@ -1,9 +1,12 @@
 <p id="movie-link">
   コメントアニメーションをつけたい
-  <%= link_to 'YouTube', 'http://www.youtube.com/', target: '_brank' %>
-  動画のURLを入力して下さい
+  <%= link_to 'YouTube動画', 'http://www.youtube.com/', target: '_brank' %>
+  のURLを入力して下さい
 </p>
 <%= render 'movies/form' %>
+
+<br>
+
 <p id="demo">
   <%= link_to 'デモページ', controller: 'movies', action: 'index', params: {url: 'xe9pvmZM1mA'} %>
 </p>
