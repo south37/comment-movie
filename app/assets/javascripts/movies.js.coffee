@@ -25,6 +25,8 @@ $ ->
     else
       window.stopMovie = true
 
+  $('#comment_message').val('')
+
 timeout = (time) ->
   $.Deferred( (dfd) ->
     setTimeout dfd.resolve, time
@@ -34,11 +36,8 @@ makeSubmitButtonHandler = ->
   $('#comment-btn').click () ->
     commentedTime = Math.floor( ytplayer.getCurrentTime() * 1000 )
     $('#comment_commented_time').val commentedTime
-    moveNewComment()
-
-moveNewComment = ->
-  newMessage = $('#comment_message').val()
-  moveComment $('<p class="comments">'+newMessage+'</p>').appendTo( $('#comments') )
+    newMessage = $('#comment_message').val()
+    moveComment $('<p class="comments">'+newMessage+'</p>').appendTo( $('#comments') )
 
 makeComments = ->
   $('.comments').map ->
