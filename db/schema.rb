@@ -11,18 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130625144009) do
+ActiveRecord::Schema.define(:version => 20130628181501) do
 
   create_table "comments", :force => true do |t|
     t.string   "message"
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
     t.integer  "commented_time", :default => 1000
+    t.integer  "movie_id"
   end
 
   create_table "movies", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "url"
   end
 
 end

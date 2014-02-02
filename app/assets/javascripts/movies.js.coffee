@@ -1,6 +1,8 @@
-jQuery ->
-  tag = jQuery('<script/>').attr('src', 'http://www.youtube.com/iframe_api')
-  jQuery('#myytplayer').before(tag)
+'use strict'
+
+$ ->
+  tag = $('<script/>').attr('src', 'http://www.youtube.com/iframe_api')
+  $('#myytplayer').before(tag)
   
   window.onYouTubeIframeAPIReady = ->
     window.ytplayer = new YT.Player('myytplayer',
@@ -18,29 +20,29 @@ jQuery ->
   window.onytplayerStateChange = (event) ->
     if (ytplayer.getPlayerState() is 1 && gon.comment_exists = true)
       window.stopMovie = false
-      moveCommentOut jQuery('#comments').children('p.onDisplay')
+      moveCommentOut $('#comments').children('p.onDisplay')
       makeComments()
     else
       window.stopMovie = true
 
 timeout = (time) ->
-  jQuery.Deferred( (dfd) ->
+  $.Deferred( (dfd) ->
     setTimeout dfd.resolve, time
   ).promise()
   
 makeSubmitButtonHandler = ->
-  jQuery('#comments-form div.submit input').click ->
+  $('#comment-btn').click () ->
     commentedTime = Math.floor( ytplayer.getCurrentTime() * 1000 )
-    jQuery('#comment_commented_time').val commentedTime
+    $('#comment_commented_time').val commentedTime
     moveNewComment()
 
 moveNewComment = ->
-  newMessage = jQuery('#comment_message').val()
-  moveComment jQuery('<p>'+newMessage+'</p>').appendTo( jQuery('#comments') )
+  newMessage = $('#comment_message').val()
+  moveComment $('<p class="comments">'+newMessage+'</p>').appendTo( $('#comments') )
 
 makeComments = ->
-  jQuery('.comments').map ->
-    comment = jQuery(this)
+  $('.comments').map ->
+    comment = $(this)
     waitTime = comment.attr('commented-time') - (ytplayer.getCurrentTime() * 1000)
     if waitTime > 0
       timeout(waitTime).then ->

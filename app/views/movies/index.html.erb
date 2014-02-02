@@ -3,9 +3,18 @@
 <div id="comments">
   <%= render @comments %>
 </div>
-<div id="comments-form">
-  <%= render 'comments/form' %>
-</div>
+
+<br>
+
+<%= form_for @comment, remote: true do |f| %>
+  <div class="input-group">
+    <%= f.text_field :message, placeholder: 'コメント', class: 'form-control' %>
+    <%= f.hidden_field :commented_time, class: 'form-control' %>
+    <div class="input-group-btn">
+      <%= f.submit 'Enter', id: 'comment-btn', class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>
 
 <br>
 
