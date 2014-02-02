@@ -1,0 +1,10 @@
+<% @next_movie = Movie.new %>
+<%= form_for(@next_movie) do |f| %>
+  <div class="field">
+    <%= f.label 'Youtubeのurl：' %>
+    <%= f.text_field :url %>
+  </div>
+  <div class="actions">
+    <%= f.submit '動画へ移動'%>
+  </div>
+<% end %>
