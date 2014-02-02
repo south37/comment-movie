@@ -4,16 +4,12 @@
   <%= render @comments %>
 </div>
 
-<br>
-
-<%= form_for @comment, remote: true do |f| %>
-  <div class="input-group">
+<%= form_for @comment, remote: true, html: {class: "navbar-form navbar-left"} do |f| %>
+  <div class="form-group">
     <%= f.text_field :message, placeholder: 'コメント', class: 'form-control' %>
     <%= f.hidden_field :commented_time, class: 'form-control' %>
-    <div class="input-group-btn">
-      <%= f.submit 'Enter', id: 'comment-btn', class: 'btn btn-primary' %>
-    </div>
-  </div>
+  </div> 
+  <%= f.submit 'Enter', id: 'comment-btn', class: 'btn btn-primary' %>
 <% end %>
 
 <br>
