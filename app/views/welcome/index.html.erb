@@ -1,4 +1,4 @@
-<p id="movie-link">
+<p id="movie-link" class="<%= flash[:class] %>">
   コメントアニメーションをつけたい
   <%= link_to 'YouTube動画', 'http://www.youtube.com/', target: '_brank' %>
   のURLを入力して下さい
@@ -8,6 +8,6 @@
 <br>
 
 <p id="demo">
-  <%= link_to 'デモページ', controller: 'movies', action: 'index', params: {url: 'xe9pvmZM1mA'} %>
+<%= link_to 'デモページへ移動', {controller: 'movies', action: 'index', params: {url: 'xe9pvmZM1mA'}}, {class: 'btn btn-primary'} %>
 </p>
 

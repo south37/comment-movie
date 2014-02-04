@@ -31,7 +31,7 @@ class MoviesController < ApplicationController
         }
         format.json { render json: @movie, status: :created, location: @movie }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to :root, flash: {class: 'alert alert-danger'} }
         format.json { render json: @movie.errors, status: :unprocessable_entity }
       end
     end
