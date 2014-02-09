@@ -1,13 +1,16 @@
+<div class="page-header">
+  <h1>Com. Movie</h1>
+  <p>Com.MovieはYouTubeの動画を、コメント付きで再生出来るサービスです。</p>
+  <p id="demo">
+  <%= link_to 'デモページへ移動', {controller: 'movies', action: 'index', params: {url: 'xe9pvmZM1mA'}}, {class: 'btn btn-primary'} %>
+  </p>
+</div>
+
+<h2>使い方</h2>
 <p id="movie-link" class="<%= flash[:class] %>">
-  コメントアニメーションをつけたい
+  1. コメントアニメーションをつけたい
   <%= link_to 'YouTube動画', 'http://www.youtube.com/', target: '_brank' %>
   のURLを入力して下さい
 </p>
+<p>2. 動画へ移動して再生スタート!!</p>
 <%= render 'movies/form' %>
-
-<br>
-
-<p id="demo">
-<%= link_to 'デモページへ移動', {controller: 'movies', action: 'index', params: {url: 'xe9pvmZM1mA'}}, {class: 'btn btn-primary'} %>
-</p>
-
