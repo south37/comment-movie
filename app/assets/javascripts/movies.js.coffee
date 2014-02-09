@@ -15,7 +15,7 @@ $ ->
       )
 
   window.onYouTubePlayerReady = (event) ->
-    makeSubmitButtonHandler()
+    do makeSubmitButtonHandler
 
   window.onytplayerStateChange = (event) ->
     if (ytplayer.getPlayerState() is 1 && gon.comment_exists = true)
@@ -27,16 +27,20 @@ $ ->
 
   $('#comment_message').val('')
 
+# utility
 timeout = (time) ->
   $.Deferred( (dfd) ->
     setTimeout dfd.resolve, time
   ).promise()
-  
+
+escapeHTML = (html) ->
+  do $('<div>').text(html).html
+
 makeSubmitButtonHandler = ->
   $('#comment-btn').click () ->
     commentedTime = Math.floor( ytplayer.getCurrentTime() * 1000 )
     $('#comment_commented_time').val commentedTime
-    newMessage = $('#comment_message').val()
+    newMessage = escapeHTML(do $('#comment_message').val)
     moveComment $('<p class="comments">'+newMessage+'</p>').appendTo( $('#comments') )
 
 makeComments = ->
