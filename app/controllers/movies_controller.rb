@@ -10,11 +10,6 @@ class MoviesController < ApplicationController
     @next_movie = Movie.new
 
     gon.comment_exists = true if @comments != []
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @movie }
-    end
   end
 
   # POST /movies
