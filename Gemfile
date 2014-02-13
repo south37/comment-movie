@@ -25,8 +25,5 @@ gem 'jquery-rails'
 # seo用
 gem 'meta-tags', :require => 'meta_tags'
 
-# javascriptにcontrollerから引数を渡す為に
-gem 'gon'
-
 # bootstrap
 gem 'bootstrap-sass', '~> 2.2.2.0'
