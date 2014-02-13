@@ -18,7 +18,7 @@ $ ->
     do makeSubmitButtonHandler
 
   window.onytplayerStateChange = (event) ->
-    if (ytplayer.getPlayerState() is 1 && gon.comment_exists = true)
+    if (ytplayer.getPlayerState() is 1)
       window.stopMovie = false
       moveCommentOut $('#comments').children('p.onDisplay')
       makeComments()

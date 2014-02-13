@@ -7,14 +7,12 @@ class MoviesController < ApplicationController
 
     @comment    = Comment.new
     @next_movie = Movie.new
-
-    gon.comment_exists = true if @comments != []
   end
 
   # POST /movies
   # POST /movies.json
   def create
-    url = params[:movie][:url].split('=').last
+    url    = params[:movie][:url].split('=').last
     @movie = Movie.new(url: url)
 
     if @movie.save
