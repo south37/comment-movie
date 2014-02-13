@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <% set_meta_tags :title => 'Com.Movie' %>
-  <% set_meta_tags :description => 'コメント付きでYoutube動画を視聴出来ます' %>
-  <% set_meta_tags :keywords => 'コメント,動画,Youtube,youtube' %>
+  <% set_meta_tags title:       'Com.Movie' %>
+  <% set_meta_tags description: 'コメント付きでYoutube動画を視聴出来ます' %>
+  <% set_meta_tags keywords:    'コメント,動画,Youtube,youtube' %>
   <%= display_meta_tags %>
 
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= include_gon %>
+  <%= stylesheet_link_tag "application", :media => "all" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
