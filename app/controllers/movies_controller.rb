@@ -23,17 +23,10 @@ class MoviesController < ApplicationController
     url = params[:movie][:url].split('=').last
     @movie = Movie.new(url: url)
 
-    respond_to do |format|
-      if @movie.save
-        format.html { redirect_to controller: 'movies',
-          action: 'index',
-          params: {url: @movie.url}
-        }
-        format.json { render json: @movie, status: :created, location: @movie }
-      else
-        format.html { redirect_to :root, flash: {class: 'alert alert-danger'} }
-        format.json { render json: @movie.errors, status: :unprocessable_entity }
-      end
+    if @movie.save
+      redirect_to controller: 'movies', action: 'index', params: {url: @movie.url}
+    else
+      redirect_to :root, flash: {class: 'alert alert-danger'}
     end
   end
 end

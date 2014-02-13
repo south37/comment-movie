@@ -7,7 +7,8 @@
 <%= form_for @comment, remote: true, html: {class: "navbar-form navbar-left"} do |f| %>
   <div class="form-group">
     <%= f.text_field :message, placeholder: 'コメントを入力してEnter', class: 'form-control' %>
-    <%= f.hidden_field :commented_time, class: 'form-control' %>
+    <%= f.hidden_field :commented_time %>
+    <%= hidden_field :movie, :url %>
   </div> 
   <%= f.submit 'Enter', id: 'comment-btn', class: 'btn btn-primary' %>
 <% end %>

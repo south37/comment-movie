@@ -13,23 +13,11 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = Comment.new(params[:comment])
-    movie = Movie.find_by_url(session[:movie_url])
+    @comment = Comment.new params[:comment]
+    movie = Movie.find_by_url params[:movie][:url]
     movie.comments << @comment
-    @new_message = @Comment.message
-    
-    respond_to do |format|
-      if @comment.save
-        #format.html { redirect_to controller: 'movies',
-        #  action: 'index',
-        #  params: {url: movie.url}
-        #}
-        #format.json { render json: @comment, status: :created, location: @comment }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
-    end
+
+    @comment.save!
   end
 
   # DELETE /comments/1
