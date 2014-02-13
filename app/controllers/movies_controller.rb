@@ -20,8 +20,8 @@ class MoviesController < ApplicationController
   # POST /movies
   # POST /movies.json
   def create
-    params[:movie][:url] = params[:movie][:url].split('=').last
-    @movie = Movie.new(params[:movie])
+    url = params[:movie][:url].split('=').last
+    @movie = Movie.new(url: url)
 
     respond_to do |format|
       if @movie.save
