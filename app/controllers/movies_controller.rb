@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
   def index
-    @movie = new_movie(params[:url])
+    @movie = Movie.find_or_create_by_url params[:url]
     gon.movie_url = params[:url]
     @comments = @movie.comments
 
@@ -35,15 +35,5 @@ class MoviesController < ApplicationController
         format.json { render json: @movie.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  # used in index
-  private
-  def new_movie(url)
-    session[:movie_url] = url
-    movie = Movie.find_by_url(session[:movie_url])
-    return movie if movie
-
-    movie = Movie.create(url: session[:movie_url])
   end
 end
