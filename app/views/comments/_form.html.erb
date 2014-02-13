@@ -1,0 +1,8 @@
+<%= form_tag '/comments', remote: true, class: "navbar-form navbar-left" do %>
+  <div class="form-group">
+    <%= text_field :comment, :message, placeholder: 'コメントを入力してEnter', class: 'form-control' %>
+    <%= hidden_field :comment, :commented_time %>
+    <%= hidden_field :movie, :url %>
+  </div> 
+  <%= submit_tag 'Enter', id: 'comment-btn', class: 'btn btn-primary' %>
+<% end %>

@@ -4,8 +4,6 @@ class MoviesController < ApplicationController
   def index
     @movie    = Movie.find_or_create_by_url params[:url]
     @comments = @movie.comments
-
-    @comment  = Comment.new
   end
 
   # POST /movies
