@@ -8,7 +8,7 @@ $ ->
     window.ytplayer = new YT.Player('myytplayer',
       height: '360'
       width: '480'
-      videoId: gon.movie_url
+      videoId: $('#movie_url').val()
       events:
         'onReady': onYouTubePlayerReady
         'onStateChange': onytplayerStateChange

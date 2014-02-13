@@ -2,8 +2,7 @@ class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
   def index
-    @movie = Movie.find_or_create_by_url params[:url]
-    gon.movie_url = params[:url]
+    @movie    = Movie.find_or_create_by_url params[:url]
     @comments = @movie.comments
 
     @comment    = Comment.new
