@@ -20,7 +20,7 @@ $ ->
   window.onytplayerStateChange = (event) ->
     if (ytplayer.getPlayerState() is 1)
       window.stopMovie = false
-      moveCommentOut $('#comments').children('p.onDisplay')
+      moveCommentOut $('.onDisplay')
       makeComments()
     else
       window.stopMovie = true
@@ -49,15 +49,13 @@ makeComments = ->
     waitTime = comment.attr('commented-time') - (ytplayer.getCurrentTime() * 1000)
     if waitTime > 0
       timeout(waitTime).then ->
-        if stopMovie is true
-          return
+        return if window.stopMovie
         moveComment comment
 
 moveComment = (comment) ->
   moveCommentIn comment
   timeout(1500).then ->
-    if stopMovie is true
-      return
+    return if window.stopMovie
     moveCommentOut comment
 
 moveCommentIn = (comment) ->
