@@ -28,45 +28,47 @@ $ ->
   $('#comment_message').val('')
 
 # utility
-timeout = (time) ->
-  $.Deferred( (dfd) ->
-    setTimeout dfd.resolve, time
-  ).promise()
+Util =
+  timeout: (time) ->
+    $.Deferred( (dfd) ->
+      setTimeout dfd.resolve, time
+    ).promise()
+  escapeHTML: (html) ->
+    do $('<div>').text(html).html
 
-escapeHTML = (html) ->
-  do $('<div>').text(html).html
+IntervalTime = 1000
+YtHeight = 280
+YtOffset = 80
 
 makeSubmitButtonHandler = ->
   $('#comment-btn').click () ->
     commentedTime = Math.floor( ytplayer.getCurrentTime() * 1000 )
     $('#comment_commented_time').val commentedTime
-    newMessage = escapeHTML(do $('#comment_message').val)
-    moveComment $('<p class="comments">'+newMessage+'</p>').appendTo( $('#comments') )
+    randPos = Math.floor( YtOffset + Math.random() * YtHeight )
+    $('#comment_position').val randPos
+    newMessage = Util.escapeHTML(do $('#comment_message').val)
+    moveComment $('<p class="comments">'+newMessage+'</p>').attr('position', randPos).appendTo( $('#comments') )
 
 makeComments = ->
   $('.comments').map ->
     comment = $(this)
     waitTime = comment.attr('commented-time') - (ytplayer.getCurrentTime() * 1000)
     if waitTime > 0
-      timeout(waitTime).then ->
+      Util.timeout(waitTime).then ->
         return if window.stopMovie
         moveComment comment
 
 moveComment = (comment) ->
   moveCommentIn comment
-  timeout(1500).then ->
+  Util.timeout(IntervalTime).then ->
     return if window.stopMovie
     moveCommentOut comment
 
 moveCommentIn = (comment) ->
   comment.css(
     'display': 'block'
-    'top': randPos()
+    'top': comment.attr('position')+'px'
   ).addClass('animated bounceInRight onDisplay')
-
-randPos = ->
-  randnum = Math.floor( Math.random() * 290 ) + 80
-  randnum + 'px'
 
 moveCommentOut = (comment) ->
   comment.removeClass('bounceInRight onDisplay').addClass('bounceOutLeft')

@@ -2,6 +2,7 @@
   <div class="form-group">
     <%= text_field :comment, :message, placeholder: 'コメントを入力してEnter', class: 'form-control' %>
     <%= hidden_field :comment, :commented_time %>
+    <%= hidden_field :comment, :position %>
     <%= hidden_field :movie, :url %>
   </div> 
   <%= submit_tag 'Enter', id: 'comment-btn', class: 'btn btn-primary' %>
