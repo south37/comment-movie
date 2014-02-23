@@ -1,6 +1,22 @@
 'use strict'
 
+Util =
+  timeout: (time) ->
+    $.Deferred( (dfd) ->
+      setTimeout dfd.resolve, time
+    ).promise()
+  escapeHTML: (html) ->
+    do $('<div>').text(html).html
+
+IntervalTime = 1000
+YtHeight = 280
+YtOffset = 80
+
 $ ->
+  do ytInitialize
+  $('#comment_message').val('')
+
+ytInitialize = ->
   tag = $('<script/>').attr('src', 'http://www.youtube.com/iframe_api')
   $('#myytplayer').before(tag)
   
@@ -24,21 +40,6 @@ $ ->
       makeComments()
     else
       window.stopMovie = true
-
-  $('#comment_message').val('')
-
-# utility
-Util =
-  timeout: (time) ->
-    $.Deferred( (dfd) ->
-      setTimeout dfd.resolve, time
-    ).promise()
-  escapeHTML: (html) ->
-    do $('<div>').text(html).html
-
-IntervalTime = 1000
-YtHeight = 280
-YtOffset = 80
 
 makeSubmitButtonHandler = ->
   $('#comment-btn').click () ->
