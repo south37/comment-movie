@@ -36,3 +36,12 @@ gem 'meta-tags', :require => 'meta_tags'
 
 # bootstrap
 gem 'bootstrap-sass', '~> 2.2.2.0'
+
+# spring入れる
+gem 'spring'
+gem 'spring-commands-rspec'
+gem 'spring-commands-cucumber'
+
+# pry-railsでconsoleを見易く
+gem 'pry-rails', :group => :development
+
