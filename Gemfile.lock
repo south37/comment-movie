@@ -58,7 +58,10 @@ GEM
       actionpack
     method_source (0.8.2)
     mime-types (1.23)
+    mini_portile (0.6.0)
     multi_json (1.7.7)
+    nokogiri (1.6.2.1)
+      mini_portile (= 0.6.0)
     pg (0.15.1)
     polyglot (0.3.3)
     pry (0.10.0)
@@ -132,6 +135,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   jquery-rails
   meta-tags
+  nokogiri
   pg
   pry-rails
   rails (= 3.2.12)

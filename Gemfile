@@ -45,3 +45,6 @@ gem 'spring-commands-cucumber'
 # pry-railsでconsoleを見易く
 gem 'pry-rails', :group => :development
 
+# youtubeのresource取得用にnokogiri
+gem 'nokogiri'
+

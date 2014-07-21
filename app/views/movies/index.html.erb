@@ -1,7 +1,9 @@
+<h1><%= @movie.title %></h1>
+
 <div id="myytplayer"></div>
 
 <div id="comments">
-  <%= render @comments %>
+  <%= render @movie.comments %>
 </div>
 
 <%= render 'comments/form' %>
