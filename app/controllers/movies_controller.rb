@@ -3,7 +3,7 @@ class MoviesController < ApplicationController
   def index
     @movie = Movie.find_by_url params[:url]
     unless @movie
-      redirect_to :root, flash: {class: 'alert alert-danger'}
+      redirect_to :root
     end
   end
 
