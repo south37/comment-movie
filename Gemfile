@@ -1,6 +1,15 @@
 source 'https://rubygems.org'
 
+ruby '2.1.2'
+
 gem 'rails', '3.2.12'
+
+# heroku push時に以下のWarningが出たため追加
+# WARNINGS:
+# Injecting plugin 'rails_log_stdout'
+# Injecting plugin 'rails3_serve_static_assets'
+# Add 'rails_12factor' gem to your Gemfile to skip plugin injection
+gem 'rails_12factor'
 
 group :production do
   gem 'pg'

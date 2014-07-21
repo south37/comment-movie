@@ -30,14 +30,14 @@ NikoNiko::Application.configure do
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
 
-  # See everything in the log (default is :info)
-  # config.log_level = :debug
-
   # Prepend all log lines with the following tags
   # config.log_tags = [ :subdomain, :uuid ]
 
   # Use a different logger for distributed setups
-  # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
+  # heroku push時にDEPRECATIONが出るので、loggerを設定
+  # 参考: http://help.papertrailapp.com/discussions/questions/116-logging-from-heroku-apps-using-unicorn
+  config.logger = Logger.new(STDOUT)
+  config.logger.level = Logger.const_get(ENV['LOG_LEVEL'] ? ENV['LOG_LEVEL'].upcase : 'INFO')
 
   # Use a different cache store in production
   # config.cache_store = :mem_cache_store
